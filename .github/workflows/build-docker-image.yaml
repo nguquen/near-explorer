@@ -27,7 +27,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ${{ github.event.inputs.context }}
+          context: .
+          file: ${{ github.event.inputs.context }}/Dockerfile
           push: true
           tags: ${{ github.repository }}-${{ github.event.inputs.context }}:latest
           cache-from: type=registry,ref=${{ github.repository }}-${{ github.event.inputs.context }}:buildcache
